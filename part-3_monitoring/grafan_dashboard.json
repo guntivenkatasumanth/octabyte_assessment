@@ -1,0 +1,64 @@
+{
+  "annotations": { "list": [] },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": { "defaults": {}, "overrides": [] },
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "options": { "showThresholdLabels": false, "showThresholdMarkers": true },
+      "targets": [
+        {
+          "expr": "node_cpu_seconds_total - node_cpu_seconds_total offset 1m",
+          "legendFormat": "CPU",
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Prometheus",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 6 },
+      "id": 2,
+      "options": {},
+      "targets": [
+        {
+          "expr": "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100",
+          "legendFormat": "Available Memory %",
+          "refId": "A"
+        }
+      ],
+      "title": "Memory Available %", 
+      "type": "timeseries"
+    },
+    {
+      "datasource": "Loki",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 12 },
+      "id": 3,
+      "options": { "showLabels": true, "showTime": true },
+      "targets": [
+        {
+          "expr": "{job=\"varlogs\"}",
+          "refId": "A",
+          "queryType": "logs"
+        }
+      ],
+      "title": "System & App Logs",
+      "type": "logs"
+    }
+  ],
+  "schemaVersion": 33,
+  "style": "dark",
+  "tags": ["infra", "logs"],
+  "templating": { "list": [] },
+  "time": { "from": "now-1h", "to": "now" },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Infra + Logs Dashboard",
+  "uid": "infra-logs-dashboard",
+  "version": 1
+}
