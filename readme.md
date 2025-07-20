@@ -97,5 +97,3 @@ This project demonstrates a complete DevOps pipeline that includes:
 
 **Problem:** No data displayed after Grafana setup.
 **Resolution:** Added Prometheus as data source manually. Confirmed scrape targets were active in Prometheus.
-
-
